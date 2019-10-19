@@ -16,13 +16,13 @@ function Footer(props) {
                   <p className="menu-label">Company</p>
                   <ul className="menu-list">
                     <li>
-                      <Link to="/">Customer Service</Link>
+                      <Link to="/" className="has-text-white">Customer Service</Link>
                     </li>
                     <li>
-                      <Link to="/">Contact Us</Link>
+                      <Link to="/" className="has-text-white">Contact Us</Link>
                     </li>
                     <li>
-                      <Link to="/">Report</Link>
+                      <Link to="/" className="has-text-white">Report</Link>
                     </li>
                   </ul>
                 </div>
@@ -32,10 +32,10 @@ function Footer(props) {
                   <p className="menu-label">Discover</p>
                   <ul className="menu-list">
                     <li>
-                      <Link to="/">Browse Events</Link>
+                      <Link to="/" className="has-text-white">Browse Events</Link>
                     </li>
                     <li>
-                      <Link to="/">Add events</Link>
+                      <Link to="/" className="has-text-white">Add events</Link>
                     </li>
                   </ul>
                 </div>
@@ -45,13 +45,13 @@ function Footer(props) {
                   <p className="menu-label">Join Us</p>
                   <ul className="menu-list">
                     <li>
-                      <Link to="/">Create a new account</Link>
+                      <Link to="/" className="has-text-white">Create a new account</Link>
                     </li>
                     <li>
-                      <Link to="/">Request a new password</Link>
+                      <Link to="/" className="has-text-white">Request a new password</Link>
                     </li>
                     <li>
-                      <Link to="/">Account settings</Link>
+                      <Link to="/" className="has-text-white">Account settings</Link>
                     </li>
                   </ul>
                 </div>
@@ -61,23 +61,20 @@ function Footer(props) {
                   <p className="menu-label">Terms & Policies</p>
                   <ul className="menu-list">
                     <li>
-                      <Link to="/">Terms of Service</Link>
+                      <Link to="/" className="has-text-white">Terms of Service</Link>
                     </li>
                     <li>
-                      <Link to="/">Privacy Policy</Link>
+                      <Link to="/" className="has-text-white">Privacy Policy</Link>
                     </li>
                     <li>
-                      <Link to="/">Cookie Policy</Link>
+                      <Link to="/" className="has-text-white">Cookie Policy</Link>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="columns">
-          <div className="column is-8 is-10-widescreen is-offset-1-widescreen is-offset-2">
             <Divider color="white" />
+            <span className="has-text-weight-light is-size-7">© 2019 BuddyFinder, Inc. All rights reserved.</span>
           </div>
         </div>
       </div>
