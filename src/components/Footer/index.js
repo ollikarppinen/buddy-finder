@@ -1,7 +1,7 @@
 import React from "react";
 import Section from "./../Section";
 import { Link } from "./../../util/router.js";
-import Logo from "./../../static/logo.png"
+import Divider from "./../../components/Divider";
 import "./styles.scss";
 
 function Footer(props) {
@@ -73,6 +73,11 @@ function Footer(props) {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="columns">
+          <div className="column is-8 is-10-widescreen is-offset-1-widescreen is-offset-2">
+            <Divider color="white" />
           </div>
         </div>
       </div>

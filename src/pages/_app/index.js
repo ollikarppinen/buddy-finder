@@ -12,7 +12,6 @@ import SignupPage from "./../signup";
 import ForgotpassPage from "./../forgotpass";
 import ChangepassPage from "./../changepass";
 import { Switch, Route, Router } from "./../../util/router.js";
-import Divider from "./../../components/Divider";
 import Footer from "./../../components/Footer";
 import analytics from "./../../util/analytics.js";
 import { ProvideAuth } from "./../../util/auth.js";
@@ -70,7 +69,6 @@ function App(props) {
             />
           </Switch>
 
-          <Divider color="light" />
           <Footer
             color="black"
             size="medium"
