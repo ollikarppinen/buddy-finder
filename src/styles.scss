@@ -1,6 +1,21 @@
 @charset "utf-8";
 
 // COLORS
+// Design Doc colors
+$white: #FFFFFF;
+$light-gray: #D8D8D8;
+$gray: #8E8E8E;
+$dark: #222222;
+$black: #000000;
+$turquoise: #38F7EA;
+$red: #D70000;
+$green: #16ec88;
+
+$primary: $white;
+$success: $green;
+
+// Old default colors
+/*
 $primary: #00d1b2;
 $info: #209CEE;
 $success: #23D160;
@@ -8,6 +23,7 @@ $warning: #FFDD57;
 $danger: #FF3860;
 $light: #F5F5F5;
 $dark: #363636;
+*/
 
 // TEXT
 $text: #4A4A4A;
