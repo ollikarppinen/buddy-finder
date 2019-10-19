@@ -25,7 +25,7 @@ function App(props) {
           <Navbar
             color="primary"
             spaced={true}
-            logo="https://uploads.divjoy.com/logo-white.svg"
+            logo="../../../../public/logo.png"
           />
 
           <Switch>

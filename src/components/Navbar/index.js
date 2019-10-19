@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavbarContainer from "./../NavbarContainer";
 import { Link } from "./../../util/router.js";
 import { useAuth } from "./../../util/auth.js";
+import logo from './../../static/logo.png';
 import "./styles.scss";
 
 function Navbar(props) {
@@ -14,7 +15,7 @@ function Navbar(props) {
         <div className="navbar-brand">
           <div className="navbar-item">
             <Link to="/">
-              <img className="image" src={props.logo} alt="Logo" />
+              <img className="image" src={logo} alt="Logo" />
             </Link>
           </div>
           <div
