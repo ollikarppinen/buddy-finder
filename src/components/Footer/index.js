@@ -1,6 +1,7 @@
 import React from "react";
 import Section from "./../Section";
 import { Link } from "./../../util/router.js";
+import Logo from "./../../static/logo.png"
 import "./styles.scss";
 
 function Footer(props) {
@@ -8,106 +9,65 @@ function Footer(props) {
     <Section color={props.color} size={props.size}>
       <div className="FooterComponent__container container">
         <div className="columns">
-          <div className="column is-5 is-4-widescreen">
-            <Link className="brand" to="/">
-              <div className="brand-icon">
-                <img
-                  className="FooterComponent__logo"
-                  src={props.logo}
-                  alt="Logo"
-                />
-              </div>
-            </Link>
-
-            {props.description && (
-              <p className="FooterComponent__description">
-                {props.description}
-              </p>
-            )}
-
-            {props.copyright && (
-              <p className="FooterComponent__copywrite">{props.copyright}</p>
-            )}
-          </div>
-          <div className="column is-7 is-6-widescreen is-offset-2-widescreen">
+          <div className="column is-8 is-10-widescreen is-offset-1-widescreen is-offset-2">
             <div className="columns">
-              <div className="column is-4">
-                <div className="menu">
-                  <p className="menu-label">Product</p>
-                  <ul className="menu-list">
-                    <li>
-                      <Link to="/pricing">Pricing</Link>
-                    </li>
-                    <li>
-                      <Link to="/faq">FAQ</Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="column is-4">
+              <div className="column is-3">
                 <div className="menu">
                   <p className="menu-label">Company</p>
                   <ul className="menu-list">
                     <li>
-                      <Link to="/about">About</Link>
+                      <Link to="/">Customer Service</Link>
                     </li>
                     <li>
-                      <Link to="/contact">Contact</Link>
+                      <Link to="/">Contact Us</Link>
                     </li>
                     <li>
-                      <a
-                        target="_blank"
-                        href="https://medium.com"
-                        rel="noopener noreferrer"
-                      >
-                        Blog
-                      </a>
+                      <Link to="/">Report</Link>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div className="column is-4">
+              <div className="column is-3">
                 <div className="menu">
-                  <p className="menu-label">Social</p>
+                  <p className="menu-label">Discover</p>
                   <ul className="menu-list">
                     <li>
-                      <a
-                        href="https://facebook.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          src="https://uploads.divjoy.com/icon-facebook.svg"
-                          alt="Facebook"
-                        />
-                        Facebook
-                      </a>
+                      <Link to="/">Browse Events</Link>
                     </li>
                     <li>
-                      <a
-                        href="https://instagram.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          src="https://uploads.divjoy.com/icon-instagram.svg"
-                          alt="Instagram"
-                        />
-                        Instagram
-                      </a>
+                      <Link to="/">Add events</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="column is-3">
+                <div className="menu">
+                  <p className="menu-label">Join Us</p>
+                  <ul className="menu-list">
+                    <li>
+                      <Link to="/">Create a new account</Link>
                     </li>
                     <li>
-                      <a
-                        href="https://twitter.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          src="https://uploads.divjoy.com/icon-twitter.svg"
-                          alt="Twitter"
-                        />
-                        Twitter
-                      </a>
+                      <Link to="/">Request a new password</Link>
+                    </li>
+                    <li>
+                      <Link to="/">Account settings</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="column is-3">
+                <div className="menu">
+                  <p className="menu-label">Terms & Policies</p>
+                  <ul className="menu-list">
+                    <li>
+                      <Link to="/">Terms of Service</Link>
+                    </li>
+                    <li>
+                      <Link to="/">Privacy Policy</Link>
+                    </li>
+                    <li>
+                      <Link to="/">Cookie Policy</Link>
                     </li>
                   </ul>
                 </div>

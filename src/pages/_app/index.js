@@ -72,7 +72,7 @@ function App(props) {
 
           <Divider color="light" />
           <Footer
-            color="white"
+            color="black"
             size="medium"
             logo="https://uploads.divjoy.com/logo.svg"
             description="A short description of what you do here"
