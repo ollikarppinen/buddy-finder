@@ -6,6 +6,7 @@ import FaqPage from "./../faq";
 import PricingPage from "./../pricing";
 import ContactPage from "./../contact";
 import DashboardPage from "./../dashboard";
+import AccountPage from "./../account";
 import SigninPage from "./../signin";
 import SignupPage from "./../signup";
 import ForgotpassPage from "./../forgotpass";
@@ -40,6 +41,8 @@ function App(props) {
             <Route exact path="/contact" component={ContactPage} />
 
             <Route exact path="/dashboard" component={DashboardPage} />
+
+            <Route exact path="/account" component={AccountPage} />
 
             <Route exact path="/signin" component={SigninPage} />
 
