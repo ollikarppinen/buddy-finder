@@ -29,8 +29,6 @@ const rrfProps = {
   // createFirestoreInstance // <- needed if using firestore
 }
 
-console.log('store', store.getState())
-
 ReactDom.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
