@@ -13,6 +13,6 @@ firebase.initializeApp({
 
 const databaseRef = firebase.database().ref()
 
-export const profilesRef = databaseRef.child('profiles')
+export const accountsRef = databaseRef.child('accounts')
 
 export default firebase

@@ -4,7 +4,7 @@ import { useAuth } from './../../util/auth.js'
 import { useRouter } from './../../util/router.js'
 import './styles.scss'
 
-function AccountPage(props) {
+const AccountPage = ({ fetchAccount }) => {
   const auth = useAuth()
   const router = useRouter()
 
@@ -16,14 +16,7 @@ function AccountPage(props) {
     }
   }, [auth, router])
 
-  return (
-    <AccountSection
-      color="white"
-      size="large"
-      title="Account"
-      subtitle="Customize your account here."
-    />
-  )
+  return <AccountSection />
 }
 
 export default AccountPage
