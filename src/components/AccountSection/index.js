@@ -7,12 +7,14 @@ function AccountSection(props) {
   return (
     <Section color={props.color} size={props.size}>
       <div className="container">
-        <SectionHeader
-          title={props.title}
-          subtitle={props.subtitle}
-          centered={true}
-          size={3}
-        />
+        <div className="card">
+          <SectionHeader
+            title={props.title}
+            subtitle={props.subtitle}
+            centered={true}
+            size={3}
+          />
+        </div>
       </div>
     </Section>
   )
