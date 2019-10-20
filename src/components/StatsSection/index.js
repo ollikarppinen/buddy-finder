@@ -1,6 +1,6 @@
-import React from "react";
-import Section from "./../Section";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import './styles.scss'
 
 function StatsSection(props) {
   return (
@@ -16,7 +16,7 @@ function StatsSection(props) {
         ))}
       </nav>
     </Section>
-  );
+  )
 }
 
-export default StatsSection;
+export default StatsSection

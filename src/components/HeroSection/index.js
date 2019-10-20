@@ -1,8 +1,8 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import SectionButton from "./../SectionButton";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import SectionButton from './../SectionButton'
+import './styles.scss'
 
 function HeroSection(props) {
   return (
@@ -25,7 +25,7 @@ function HeroSection(props) {
         </div>
       </div>
     </Section>
-  );
+  )
 }
 
-export default HeroSection;
+export default HeroSection

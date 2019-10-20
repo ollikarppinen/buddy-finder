@@ -1,6 +1,6 @@
-import React from "react";
-import BackgroundImage from "./../BackgroundImage";
-import "./styles.scss";
+import React from 'react'
+import BackgroundImage from './../BackgroundImage'
+import './styles.scss'
 
 function Section(props) {
   const {
@@ -11,14 +11,14 @@ function Section(props) {
     children,
     // Passed to section element
     ...otherProps
-  } = props;
+  } = props
 
   return (
     <section
       className={
-        "SectionComponent hero section is-block is-relative" +
-        (color ? ` is-${color}` : "") +
-        (size ? ` is-${size}` : "")
+        'SectionComponent hero section is-block is-relative' +
+        (color ? ` is-${color}` : '') +
+        (size ? ` is-${size}` : '')
       }
       {...otherProps}
     >
@@ -31,7 +31,7 @@ function Section(props) {
 
       {props.children}
     </section>
-  );
+  )
 }
 
-export default Section;
+export default Section

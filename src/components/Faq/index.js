@@ -1,6 +1,6 @@
-import React from "react";
-import FaqItem from "./../FaqItem";
-import "./styles.scss";
+import React from 'react'
+import FaqItem from './../FaqItem'
+import './styles.scss'
 
 function Faq(props) {
   return (
@@ -9,7 +9,7 @@ function Faq(props) {
         <FaqItem question={item.question} answer={item.answer} key={index} />
       ))}
     </>
-  );
+  )
 }
 
-export default Faq;
+export default Faq

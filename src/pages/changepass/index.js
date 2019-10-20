@@ -1,6 +1,6 @@
-import React from "react";
-import ChangePassSection from "./../../components/ChangePassSection";
-import "./styles.scss";
+import React from 'react'
+import ChangePassSection from './../../components/ChangePassSection'
+import './styles.scss'
 
 function ChangepassPage(props) {
   return (
@@ -11,7 +11,7 @@ function ChangepassPage(props) {
       subtitle=""
       buttonText="Change password"
     />
-  );
+  )
 }
 
-export default ChangepassPage;
+export default ChangepassPage

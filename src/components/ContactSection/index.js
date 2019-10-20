@@ -1,8 +1,8 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import Contact from "./../Contact";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import Contact from './../Contact'
+import './styles.scss'
 
 function ContactSection(props) {
   return (
@@ -21,7 +21,7 @@ function ContactSection(props) {
         />
       </div>
     </Section>
-  );
+  )
 }
 
-export default ContactSection;
+export default ContactSection

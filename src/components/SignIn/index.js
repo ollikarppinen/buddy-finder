@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import Auth from "./../Auth";
-import { useAuth } from "./../../util/auth.js";
-import "./styles.scss";
+import React, { useState } from 'react'
+import Auth from './../Auth'
+import { useAuth } from './../../util/auth.js'
+import './styles.scss'
 
 function SignIn(props) {
-  const auth = useAuth();
-  const [status, setStatus] = useState();
+  const auth = useAuth()
+  const [status, setStatus] = useState()
 
   const onSubmit = ({ email, pass }) => {
-    setStatus({ type: "pending" });
+    setStatus({ type: 'pending' })
     auth
       .signin(email, pass)
       .then(user => {
-        props.onSignin && props.onSignin();
+        props.onSignin && props.onSignin()
       })
       .catch(error => {
         setStatus({
-          type: "error",
+          type: 'error',
           message: error.message
-        });
-      });
-  };
+        })
+      })
+  }
 
   return (
     <Auth
@@ -30,7 +30,7 @@ function SignIn(props) {
       onSubmit={onSubmit}
       status={status}
     />
-  );
+  )
 }
 
-export default SignIn;
+export default SignIn

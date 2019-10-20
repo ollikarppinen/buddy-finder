@@ -1,6 +1,6 @@
-import React from "react";
-import ContactSection from "./../../components/ContactSection";
-import "./styles.scss";
+import React from 'react'
+import ContactSection from './../../components/ContactSection'
+import './styles.scss'
 
 function ContactPage(props) {
   return (
@@ -12,7 +12,7 @@ function ContactPage(props) {
       showNameField={true}
       buttonText="Send message"
     />
-  );
+  )
 }
 
-export default ContactPage;
+export default ContactPage

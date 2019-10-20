@@ -1,5 +1,5 @@
-import React from "react";
-import "./styles.scss";
+import React from 'react'
+import './styles.scss'
 
 function Features(props) {
   return (
@@ -7,11 +7,11 @@ function Features(props) {
       {props.items.map((item, index) => (
         <div
           className={
-            "Features__column column" +
-            (props.columns === 1 ? " is-full" : "") +
-            (props.columns === 2 ? " is-half" : "") +
-            (props.columns === 3 ? " is-one-third" : "") +
-            (props.columns === 4 ? " is-one-quarter" : "")
+            'Features__column column' +
+            (props.columns === 1 ? ' is-full' : '') +
+            (props.columns === 2 ? ' is-half' : '') +
+            (props.columns === 3 ? ' is-one-third' : '') +
+            (props.columns === 4 ? ' is-one-quarter' : '')
           }
           key={index}
         >
@@ -25,7 +25,7 @@ function Features(props) {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
-export default Features;
+export default Features

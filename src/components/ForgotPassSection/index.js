@@ -1,8 +1,8 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import ForgotPass from "./../ForgotPass";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import ForgotPass from './../ForgotPass'
+import './styles.scss'
 
 function ForgotPassSection(props) {
   return (
@@ -17,7 +17,7 @@ function ForgotPassSection(props) {
         <ForgotPass buttonText={props.buttonText} parentColor={props.color} />
       </div>
     </Section>
-  );
+  )
 }
 
-export default ForgotPassSection;
+export default ForgotPassSection

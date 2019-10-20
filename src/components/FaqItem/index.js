@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import "./styles.scss";
+import React, { useState } from 'react'
+import './styles.scss'
 
 function FaqItem(props) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
 
   return (
     <article className="FaqItem" onClick={() => setExpanded(!expanded)}>
@@ -10,9 +10,9 @@ function FaqItem(props) {
         <span className="FaqItem__icon icon is-size-5 has-text-primary">
           <i
             className={
-              "fas" +
-              (expanded ? " fa-minus" : "") +
-              (!expanded ? " fa-plus" : "")
+              'fas' +
+              (expanded ? ' fa-minus' : '') +
+              (!expanded ? ' fa-plus' : '')
             }
           />
         </span>
@@ -21,7 +21,7 @@ function FaqItem(props) {
 
       {expanded && <div className="subtitle">{props.answer}</div>}
     </article>
-  );
+  )
 }
 
-export default FaqItem;
+export default FaqItem

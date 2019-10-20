@@ -1,17 +1,17 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import SignIn from "./../SignIn";
-import { useRouter } from "./../../util/router.js";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import SignIn from './../SignIn'
+import { useRouter } from './../../util/router.js'
+import './styles.scss'
 
 function SignInSection(props) {
-  const router = useRouter();
+  const router = useRouter()
 
   // Go to page after signin
   const onSignin = () => {
-    router.push("/dashboard");
-  };
+    router.push('/dashboard')
+  }
 
   return (
     <Section color={props.color} size={props.size}>
@@ -29,7 +29,7 @@ function SignInSection(props) {
         />
       </div>
     </Section>
-  );
+  )
 }
 
-export default SignInSection;
+export default SignInSection

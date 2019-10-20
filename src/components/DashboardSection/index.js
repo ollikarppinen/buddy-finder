@@ -1,7 +1,7 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import './styles.scss'
 
 function DashboardSection(props) {
   return (
@@ -15,7 +15,7 @@ function DashboardSection(props) {
         />
       </div>
     </Section>
-  );
+  )
 }
 
-export default DashboardSection;
+export default DashboardSection

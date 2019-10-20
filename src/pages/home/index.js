@@ -1,14 +1,14 @@
-import React from "react";
-import HeroSection from "./../../components/HeroSection";
-import FeaturesSection from "./../../components/FeaturesSection";
-import ClientsSection from "./../../components/ClientsSection";
-import TestimonialsSection from "./../../components/TestimonialsSection";
-import CtaSection from "./../../components/CtaSection";
-import { useRouter } from "./../../util/router.js";
-import "./styles.scss";
+import React from 'react'
+import HeroSection from './../../components/HeroSection'
+import FeaturesSection from './../../components/FeaturesSection'
+import ClientsSection from './../../components/ClientsSection'
+import TestimonialsSection from './../../components/TestimonialsSection'
+import CtaSection from './../../components/CtaSection'
+import { useRouter } from './../../util/router.js'
+import './styles.scss'
 
 function HomePage(props) {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <>
@@ -19,7 +19,7 @@ function HomePage(props) {
         subtitle="This landing page is perfect for showing off your awesome product and driving people to sign up for a paid plan."
         buttonText="Start Free Trial"
         buttonOnClick={() => {
-          router.push("/pricing");
+          router.push('/pricing')
         }}
       />
       <FeaturesSection
@@ -47,11 +47,11 @@ function HomePage(props) {
         subtitle=""
         buttonText="Get Started"
         buttonOnClick={() => {
-          router.push("/pricing");
+          router.push('/pricing')
         }}
       />
     </>
-  );
+  )
 }
 
-export default HomePage;
+export default HomePage

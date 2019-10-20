@@ -1,8 +1,8 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import ChangePass from "./../ChangePass";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import ChangePass from './../ChangePass'
+import './styles.scss'
 
 function ChangePassSection(props) {
   return (
@@ -17,7 +17,7 @@ function ChangePassSection(props) {
         <ChangePass buttonText={props.buttonText} parentColor={props.color} />
       </div>
     </Section>
-  );
+  )
 }
 
-export default ChangePassSection;
+export default ChangePassSection

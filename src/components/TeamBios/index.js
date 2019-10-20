@@ -1,7 +1,7 @@
-import React from "react";
-import CenteredColumns from "./../CenteredColumns";
-import Avatar from "./../Avatar";
-import "./styles.scss";
+import React from 'react'
+import CenteredColumns from './../CenteredColumns'
+import Avatar from './../Avatar'
+import './styles.scss'
 
 function TeamBios(props) {
   return (
@@ -28,7 +28,7 @@ function TeamBios(props) {
         </div>
       ))}
     </CenteredColumns>
-  );
+  )
 }
 
-export default TeamBios;
+export default TeamBios

@@ -1,6 +1,6 @@
-import React from "react";
-import ForgotPassSection from "./../../components/ForgotPassSection";
-import "./styles.scss";
+import React from 'react'
+import ForgotPassSection from './../../components/ForgotPassSection'
+import './styles.scss'
 
 function ForgotpassPage(props) {
   return (
@@ -11,7 +11,7 @@ function ForgotpassPage(props) {
       subtitle=""
       buttonText="Reset password"
     />
-  );
+  )
 }
 
-export default ForgotpassPage;
+export default ForgotpassPage

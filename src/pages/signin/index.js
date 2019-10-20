@@ -1,6 +1,6 @@
-import React from "react";
-import SignInSection from "./../../components/SignInSection";
-import "./styles.scss";
+import React from 'react'
+import SignInSection from './../../components/SignInSection'
+import './styles.scss'
 
 function SigninPage(props) {
   return (
@@ -11,7 +11,7 @@ function SigninPage(props) {
       subtitle=""
       buttonText="Sign in"
     />
-  );
+  )
 }
 
-export default SigninPage;
+export default SigninPage

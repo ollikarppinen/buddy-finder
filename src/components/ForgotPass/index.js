@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import Auth from "./../Auth";
-import { useAuth } from "./../../util/auth.js";
-import "./styles.scss";
+import React, { useState } from 'react'
+import Auth from './../Auth'
+import { useAuth } from './../../util/auth.js'
+import './styles.scss'
 
 function ForgotPass(props) {
-  const auth = useAuth();
-  const [status, setStatus] = useState();
+  const auth = useAuth()
+  const [status, setStatus] = useState()
 
   const onSubmit = ({ email }) => {
-    setStatus({ type: "pending" });
+    setStatus({ type: 'pending' })
     auth
       .sendPasswordResetEmail(email)
       .then(() => {
         setStatus({
-          type: "success",
-          message: "Password reset email sent"
-        });
+          type: 'success',
+          message: 'Password reset email sent'
+        })
       })
       .catch(error => {
         setStatus({
-          type: "error",
+          type: 'error',
           message: error.message
-        });
-      });
-  };
+        })
+      })
+  }
 
   return (
     <Auth
@@ -33,7 +33,7 @@ function ForgotPass(props) {
       onSubmit={onSubmit}
       status={status}
     />
-  );
+  )
 }
 
-export default ForgotPass;
+export default ForgotPass

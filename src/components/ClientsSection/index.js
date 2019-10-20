@@ -1,8 +1,8 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import Clients from "./../Clients";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import Clients from './../Clients'
+import './styles.scss'
 
 function ClientsSection(props) {
   return (
@@ -17,30 +17,30 @@ function ClientsSection(props) {
         <Clients
           items={[
             {
-              name: "Instagram",
-              image: "https://uploads.divjoy.com/logo-instagram.svg",
-              width: "150px"
+              name: 'Instagram',
+              image: 'https://uploads.divjoy.com/logo-instagram.svg',
+              width: '150px'
             },
             {
-              name: "Slack",
-              image: "https://uploads.divjoy.com/logo-slack.svg",
-              width: "135px"
+              name: 'Slack',
+              image: 'https://uploads.divjoy.com/logo-slack.svg',
+              width: '135px'
             },
             {
-              name: "Tinder",
-              image: "https://uploads.divjoy.com/logo-tinder.svg",
-              width: "90px"
+              name: 'Tinder',
+              image: 'https://uploads.divjoy.com/logo-tinder.svg',
+              width: '90px'
             },
             {
-              name: "Spotify",
-              image: "https://uploads.divjoy.com/logo-spotify.svg",
-              width: "135px"
+              name: 'Spotify',
+              image: 'https://uploads.divjoy.com/logo-spotify.svg',
+              width: '135px'
             }
           ]}
         />
       </div>
     </Section>
-  );
+  )
 }
 
-export default ClientsSection;
+export default ClientsSection

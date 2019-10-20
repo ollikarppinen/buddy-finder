@@ -2,13 +2,13 @@
 
 // COLORS
 // Design Doc colors
-$white: #FFFFFF;
-$light-gray: #D8D8D8;
-$gray: #8E8E8E;
+$white: #ffffff;
+$light-gray: #d8d8d8;
+$gray: #8e8e8e;
 $dark: #222222;
 $black: #000000;
-$turquoise: #38F7EA;
-$red: #D70000;
+$turquoise: #38f7ea;
+$red: #d70000;
 $green: #16ec88;
 
 $primary: $white;
@@ -26,8 +26,8 @@ $dark: #363636;
 */
 
 // TEXT
-$text: #4A4A4A;
-$link: #3273DC;
+$text: #4a4a4a;
+$link: #3273dc;
 $body-family: 'Asap', sans-serif;
 $title-family: false;
 $button-family: false;
@@ -50,4 +50,4 @@ $section-padding-large: 9rem 1.5rem;
 // https://bit.ly/30UvE5O
 
 // IMPORT BULMA
-@import "~bulma/bulma.sass";
+@import '~bulma/bulma.sass';

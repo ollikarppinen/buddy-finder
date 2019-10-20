@@ -1,5 +1,5 @@
-import React from "react";
-import "./styles.scss";
+import React from 'react'
+import './styles.scss'
 
 function Pricing(props) {
   return (
@@ -8,8 +8,8 @@ function Pricing(props) {
         <div className="Pricing__column column" key={index}>
           <div
             className={
-              "Pricing__card card" +
-              (item.emphasized === true ? " emphasized" : "")
+              'Pricing__card card' +
+              (item.emphasized === true ? ' emphasized' : '')
             }
           >
             <div className="Pricing__card-content card-content">
@@ -33,7 +33,7 @@ function Pricing(props) {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
-export default Pricing;
+export default Pricing

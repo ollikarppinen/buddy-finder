@@ -1,8 +1,8 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import SectionButton from "./../SectionButton";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import SectionButton from './../SectionButton'
+import './styles.scss'
 
 function CtaSection(props) {
   return (
@@ -28,7 +28,7 @@ function CtaSection(props) {
         </div>
       </div>
     </Section>
-  );
+  )
 }
 
-export default CtaSection;
+export default CtaSection

@@ -1,13 +1,13 @@
-import React from "react";
-import ContentSection from "./../../components/ContentSection";
-import StatsSection from "./../../components/StatsSection";
-import TeamBiosSection from "./../../components/TeamBiosSection";
-import CtaSection from "./../../components/CtaSection";
-import { useRouter } from "./../../util/router.js";
-import "./styles.scss";
+import React from 'react'
+import ContentSection from './../../components/ContentSection'
+import StatsSection from './../../components/StatsSection'
+import TeamBiosSection from './../../components/TeamBiosSection'
+import CtaSection from './../../components/CtaSection'
+import { useRouter } from './../../util/router.js'
+import './styles.scss'
 
 function AboutPage(props) {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <>
@@ -22,20 +22,20 @@ function AboutPage(props) {
         size="medium"
         items={[
           {
-            title: "Tweets",
-            stat: "3,456"
+            title: 'Tweets',
+            stat: '3,456'
           },
           {
-            title: "Following",
-            stat: "123"
+            title: 'Following',
+            stat: '123'
           },
           {
-            title: "Followers",
-            stat: "456k"
+            title: 'Followers',
+            stat: '456k'
           },
           {
-            title: "Likes",
-            stat: "789"
+            title: 'Likes',
+            stat: '789'
           }
         ]}
       />
@@ -52,11 +52,11 @@ function AboutPage(props) {
         subtitle=""
         buttonText="Get Started"
         buttonOnClick={() => {
-          router.push("/pricing");
+          router.push('/pricing')
         }}
       />
     </>
-  );
+  )
 }
 
-export default AboutPage;
+export default AboutPage

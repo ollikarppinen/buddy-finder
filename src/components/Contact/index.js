@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import ContactForm from "./../ContactForm";
-import contact from "./../../util/contact.js";
-import "./styles.scss";
+import React, { useState } from 'react'
+import ContactForm from './../ContactForm'
+import contact from './../../util/contact.js'
+import './styles.scss'
 
 function Contact(props) {
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState()
 
   const onSubmit = ({ name, email, message }) => {
-    setStatus({ type: "pending" });
+    setStatus({ type: 'pending' })
 
     contact.submit({ name, email, message }).then(() => {
       setStatus({
-        type: "success",
+        type: 'success',
         message: "Your message has been sent! We'll get back to you soon."
-      });
-    });
-  };
+      })
+    })
+  }
   return (
     <ContactForm
       parentColor={props.parentColor}
@@ -24,7 +24,7 @@ function Contact(props) {
       onSubmit={onSubmit}
       status={status}
     />
-  );
+  )
 }
 
-export default Contact;
+export default Contact

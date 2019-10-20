@@ -1,7 +1,7 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import './styles.scss'
 
 function ContentSection(props) {
   return (
@@ -20,7 +20,7 @@ function ContentSection(props) {
         />
       </div>
     </Section>
-  );
+  )
 }
 
-export default ContentSection;
+export default ContentSection

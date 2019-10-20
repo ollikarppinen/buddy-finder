@@ -1,21 +1,21 @@
-import React from "react";
-import Navbar from "./../../components/Navbar";
-import HomePage from "./../home";
-import AboutPage from "./../about";
-import FaqPage from "./../faq";
-import PricingPage from "./../pricing";
-import ContactPage from "./../contact";
-import DashboardPage from "./../dashboard";
-import AccountPage from "./../account";
-import SigninPage from "./../signin";
-import SignupPage from "./../signup";
-import ForgotpassPage from "./../forgotpass";
-import ChangepassPage from "./../changepass";
-import { Switch, Route, Router } from "./../../util/router.js";
-import Footer from "./../../components/Footer";
-import analytics from "./../../util/analytics.js";
-import { ProvideAuth } from "./../../util/auth.js";
-import "./styles.scss";
+import React from 'react'
+import Navbar from './../../components/Navbar'
+import HomePage from './../home'
+import AboutPage from './../about'
+import FaqPage from './../faq'
+import PricingPage from './../pricing'
+import ContactPage from './../contact'
+import DashboardPage from './../dashboard'
+import AccountPage from './../account'
+import SigninPage from './../signin'
+import SignupPage from './../signup'
+import ForgotpassPage from './../forgotpass'
+import ChangepassPage from './../changepass'
+import { Switch, Route, Router } from './../../util/router.js'
+import Footer from './../../components/Footer'
+import analytics from './../../util/analytics.js'
+import { ProvideAuth } from './../../util/auth.js'
+import './styles.scss'
 
 function App(props) {
   return (
@@ -56,15 +56,15 @@ function App(props) {
                 return (
                   <div
                     style={{
-                      padding: "50px",
-                      width: "100%",
-                      textAlign: "center"
+                      padding: '50px',
+                      width: '100%',
+                      textAlign: 'center'
                     }}
                   >
                     The page <code>{location.pathname}</code> could not be
                     found.
                   </div>
-                );
+                )
               }}
             />
           </Switch>
@@ -79,7 +79,7 @@ function App(props) {
         </>
       </Router>
     </ProvideAuth>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,17 +1,17 @@
-import React from "react";
-import Section from "./../Section";
-import SectionHeader from "./../SectionHeader";
-import SignUp from "./../SignUp";
-import { useRouter } from "./../../util/router.js";
-import "./styles.scss";
+import React from 'react'
+import Section from './../Section'
+import SectionHeader from './../SectionHeader'
+import SignUp from './../SignUp'
+import { useRouter } from './../../util/router.js'
+import './styles.scss'
 
 function SignUpSection(props) {
-  const router = useRouter();
+  const router = useRouter()
 
   // Go to page after signup
   const onSignup = () => {
-    router.push("/dashboard");
-  };
+    router.push('/dashboard')
+  }
 
   return (
     <Section color={props.color} size={props.size}>
@@ -29,7 +29,7 @@ function SignUpSection(props) {
         />
       </div>
     </Section>
-  );
+  )
 }
 
-export default SignUpSection;
+export default SignUpSection

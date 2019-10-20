@@ -1,7 +1,7 @@
-import React from "react";
-import CenteredColumns from "./../CenteredColumns";
-import Avatar from "./../Avatar";
-import "./styles.scss";
+import React from 'react'
+import CenteredColumns from './../CenteredColumns'
+import Avatar from './../Avatar'
+import './styles.scss'
 
 function Testimonials(props) {
   return (
@@ -29,7 +29,7 @@ function Testimonials(props) {
         </div>
       ))}
     </CenteredColumns>
-  );
+  )
 }
 
-export default Testimonials;
+export default Testimonials
