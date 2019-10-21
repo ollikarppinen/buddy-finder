@@ -43,7 +43,7 @@ function Footer(props) {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/" className="has-text-white">
+                      <Link to="/create_event" className="has-text-white">
                         Add events
                       </Link>
                     </li>

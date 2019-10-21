@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-import AccountSection from './../../components/AccountSection'
+import CreateEventSection from './../../components/CreateEventSection'
 import { useAuth } from './../../util/auth.js'
 import { useRouter } from './../../util/router.js'
-import './styles.scss'
 
-const AccountPage = () => {
+const CreateEventPage = () => {
   const auth = useAuth()
   const router = useRouter()
 
@@ -16,7 +15,7 @@ const AccountPage = () => {
     }
   }, [auth, router])
 
-  return <AccountSection />
+  return <CreateEventSection />
 }
 
-export default AccountPage
+export default CreateEventPage

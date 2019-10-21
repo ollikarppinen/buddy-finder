@@ -11,6 +11,7 @@ import SigninPage from './../signin'
 import SignupPage from './../signup'
 import ForgotpassPage from './../forgotpass'
 import ChangepassPage from './../changepass'
+import CreateEventPage from './../createEvent'
 import { Switch, Route, Router } from './../../util/router.js'
 import Footer from './../../components/Footer'
 import analytics from './../../util/analytics.js'
@@ -51,6 +52,8 @@ function App() {
               <Route exact path="/forgotpass" component={ForgotpassPage} />
 
               <Route exact path="/changepass" component={ChangepassPage} />
+
+              <Route exact path="/create_event" component={CreateEventPage} />
 
               <Route
                 component={({ location }) => {

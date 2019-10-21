@@ -100,9 +100,11 @@ const ProfileForm = ({ profile, firebase }) => {
   )
 }
 
+const mapStateToProps = ({ firebase: { profile } }) => ({
+  profile
+})
+
 export default compose(
   withFirebase,
-  connect(({ firebase: { profile } }) => ({
-    profile
-  }))
+  connect(mapStateToProps)
 )(AccountSection)
