@@ -38,7 +38,7 @@ function Footer(props) {
                   <p className="menu-label">Discover</p>
                   <ul className="menu-list">
                     <li>
-                      <Link to="/" className="has-text-white">
+                      <Link to="/events" className="has-text-white">
                         Browse Events
                       </Link>
                     </li>
