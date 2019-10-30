@@ -14,7 +14,7 @@ import ChangepassPage from './../changepass'
 import CreateEventPage from './../createEvent'
 import { Switch, Route, Router } from './../../util/router.js'
 import Footer from './../../components/Footer'
-import analytics from './../../util/analytics.js'
+// import analytics from './../../util/analytics.js'
 import { ProvideAuth } from './../../util/auth.js'
 import './styles.scss'
 

@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { withFirebase, isLoaded } from 'react-redux-firebase'
-import { useDebounce } from 'react-use'
+import { useFirebase, isLoaded } from 'react-redux-firebase'
+import { useRouter } from './../../util/router.js'
 
 import Section from './../Section'
 
 import './styles.scss'
 
-const CreateEventSection = ({ firebase, auth }) => {
-  const onCreate = () => {}
-
+const CreateEventSection = ({ auth }) => {
   return (
     <Section>
       <div className="container">
@@ -20,11 +18,7 @@ const CreateEventSection = ({ firebase, auth }) => {
           </header>
           <div className="card-content">
             <div className="content">
-              {isLoaded(auth) ? (
-                <EventForm onCreate={onCreate} />
-              ) : (
-                'loading...'
-              )}
+              {isLoaded(auth) ? <EventForm userUid={auth.uid} /> : 'loading...'}
             </div>
           </div>
         </div>
@@ -33,7 +27,24 @@ const CreateEventSection = ({ firebase, auth }) => {
   )
 }
 
-const EventForm = ({ onCreate }) => {
+const EventForm = ({ userUid }) => {
+  const router = useRouter()
+  const firebase = useFirebase()
+  const onCreateEvent = event => {
+    event.preventDefault()
+    firebase
+      .push('events', {
+        name,
+        description,
+        location,
+        startTime,
+        endTime,
+        userUid,
+        createdAt: firebase.database.ServerValue.TIMESTAMP
+      })
+      .then(({ key }) => router.push(`/events/${key}`))
+  }
+
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [location, setLocation] = useState('')
@@ -100,6 +111,9 @@ const EventForm = ({ onCreate }) => {
           />
         </div>
       </div>
+      <button onClick={onCreateEvent} className="button is-success">
+        Create
+      </button>
     </form>
   )
 }
@@ -108,7 +122,4 @@ const mapStateToProps = ({ firebase: { auth } }) => ({
   auth
 })
 
-export default compose(
-  withFirebase,
-  connect(mapStateToProps)
-)(CreateEventSection)
+export default compose(connect(mapStateToProps))(CreateEventSection)
