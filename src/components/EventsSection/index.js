@@ -39,7 +39,7 @@ const EventList = ({ events = {} }) => (
   <ul>
     {Object.keys(events).map(id => (
       <li key={id}>
-        <Link to={`events/${id}`}>{events[id].name}</Link>
+        <Link to={`/events/${id}`}>{events[id].name}</Link>
       </li>
     ))}
   </ul>
