@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import EventSection from './../../components/EventSection'
+import EventBuddiesSection from './../../components/EventBuddiesSection'
 import { useAuth } from './../../util/auth.js'
 import { useRouter } from './../../util/router.js'
 
-const EventPage = () => {
+const EventBuddiesPage = () => {
   const auth = useAuth()
   const router = useRouter()
 
@@ -15,7 +15,7 @@ const EventPage = () => {
     }
   }, [auth, router])
 
-  return <EventSection user={auth.user} />
+  return <EventBuddiesSection user={auth.user} />
 }
 
-export default EventPage
+export default EventBuddiesPage

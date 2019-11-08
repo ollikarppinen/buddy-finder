@@ -22,7 +22,15 @@ export const EventSection = () => {
       <div className="container">
         <div className="card">
           <header className="card-header">
-            <p className="card-header-title">Events</p>
+            <p className="card-header-title breadcrumb">
+              <ul>
+                <li className="is-active">
+                  <Link to={`/events`} aria-current="page">
+                    Events
+                  </Link>
+                </li>
+              </ul>
+            </p>
           </header>
           <div className="card-content">
             <div className="content">
