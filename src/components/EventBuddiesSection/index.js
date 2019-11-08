@@ -33,13 +33,13 @@ export const EventBuddiesSection = ({ user }) => {
           <header className="card-header">
             <div className="card-header-title breadcrumb">
               <ul>
-                <li>
+                <li key="1">
                   <Link to={`/events`}>Events</Link>
                 </li>
-                <li>
+                <li key="2">
                   <Link to={`/events/${id}`}>{event.name}</Link>
                 </li>
-                <li className="is-active">
+                <li key="3" className="is-active">
                   <Link to={path} aria-current="page">
                     Buddies
                   </Link>
@@ -60,7 +60,7 @@ export const EventBuddiesSection = ({ user }) => {
 const BuddyList = ({ event, userUid, eventId }) => {
   const attendees = event.attendees || {}
 
-  const path = `users/${userUid}/connections/${eventId}`
+  const path = `users/${userUid}`
   useFirebaseConnect([{ path }])
   const { [userUid]: user } = useSelector(
     state => state.firebase.data.users || {}
@@ -69,6 +69,7 @@ const BuddyList = ({ event, userUid, eventId }) => {
     return <div className="is-loading">Loading...</div>
   }
   const connections = (user.connections || {})[eventId] || {}
+  const matches = (user.matches || {})[eventId] || {}
 
   const candidates = Object.keys(attendees).reduce(
     (acc, uid) => (uid !== userUid && attendees[uid] ? acc.concat(uid) : acc),
@@ -86,21 +87,22 @@ const BuddyList = ({ event, userUid, eventId }) => {
           buddyUid={uid}
           eventId={eventId}
           connected={connections[uid]}
+          matchUid={matches[uid]}
         />
       ))}
     </ul>
   )
 }
 
-const BuddyListItem = ({ eventId, buddyUid, userUid, connected }) => {
+const BuddyListItem = ({ eventId, buddyUid, userUid, connected, matchUid }) => {
   const firebase = useFirebase()
   const path = `users/${buddyUid}`
   useFirebaseConnect([{ path }])
-  const { [buddyUid]: user } = useSelector(
+  const { [buddyUid]: buddy } = useSelector(
     state => state.firebase.data.users || {}
   )
 
-  if (!isLoaded(user)) {
+  if (!isLoaded(buddy)) {
     return (
       <li key={buddyUid} className="is-loading">
         Loading...
@@ -113,6 +115,28 @@ const BuddyListItem = ({ eventId, buddyUid, userUid, connected }) => {
       `users/${userUid}/connections/${eventId}/${buddyUid}`,
       connection
     )
+    if (
+      connection &&
+      !matchUid &&
+      ((buddy.connections || {})[eventId] || {})[userUid]
+    ) {
+      firebase
+        .push('matches', {
+          firstMatcherUid: buddyUid,
+          secondMatcherUid: userUid,
+          eventUid: eventId,
+          createdAt: firebase.database.ServerValue.TIMESTAMP
+        })
+        .then(({ key }) => {
+          firebase.set(`users/${userUid}/matches/${eventId}/${buddyUid}`, key)
+          firebase.set(`users/${buddyUid}/matches/${eventId}/${userUid}`, key)
+        })
+    } else if (!connection && matchUid) {
+      firebase.remove(`matches/${matchUid}`).then(() => {
+        firebase.remove(`users/${userUid}/matches/${eventId}/${buddyUid}`)
+        firebase.remove(`users/${buddyUid}/matches/${eventId}/${userUid}`)
+      })
+    }
   }
 
   return (
@@ -125,13 +149,14 @@ const BuddyListItem = ({ eventId, buddyUid, userUid, connected }) => {
       <div className="media-content">
         <div className="content">
           <p>
-            <strong>{user.name}</strong>
+            <strong>{buddy.name}</strong>
             <br />
-            {user.description}
+            {buddy.description}
           </p>
         </div>
       </div>
       <div className="media-right">
+        {matchUid ? <div className="">Connected!</div> : null}
         {connected ? (
           <button
             className="button is-danger"
