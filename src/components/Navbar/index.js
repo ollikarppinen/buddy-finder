@@ -3,11 +3,17 @@ import NavbarContainer from './../NavbarContainer'
 import { Link } from './../../util/router.js'
 import { useAuth } from './../../util/auth.js'
 import logo from './../../static/logo.png'
+import classNames from 'classnames'
 import './styles.scss'
 
 function Navbar(props) {
   const auth = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false)
+  const closeMenu = () => {
+    setMenuOpen(false)
+    setAccountMenuOpen(false)
+  }
 
   return (
     <NavbarContainer spaced={props.spaced} color={props.color}>
@@ -19,7 +25,9 @@ function Navbar(props) {
             </Link>
           </div>
           <div
-            className={'navbar-burger burger' + (menuOpen ? ' is-active' : '')}
+            className={classNames('navbar-burger burger', {
+              'is-active': menuOpen
+            })}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <span />
@@ -27,22 +35,55 @@ function Navbar(props) {
             <span />
           </div>
         </div>
-        <div className={'navbar-menu' + (menuOpen ? ' is-active' : '')}>
-          <div className="navbar-end">
-            {auth.user && (
-              <div className="navbar-item has-dropdown is-hoverable">
-                <Link className="navbar-link" to="/account">
+        <div
+          className={classNames('navbar-menu', {
+            'is-active': menuOpen
+          })}
+        >
+          {auth.user && (
+            <div className="navbar-end">
+              <Link className="navbar-item" to="/events" onClick={closeMenu}>
+                Events
+              </Link>
+              <div
+                className={classNames('navbar-item has-dropdown', {
+                  'is-active': accountMenuOpen
+                })}
+              >
+                <div
+                  className="navbar-link"
+                  onClick={() => setAccountMenuOpen(!accountMenuOpen)}
+                >
                   Account
-                </Link>
+                </div>
                 <div className="navbar-dropdown is-boxed">
-                  <Link className="navbar-item" to="/dashboard">
+                  <Link
+                    className="navbar-item"
+                    to="/account"
+                    onClick={closeMenu}
+                  >
+                    Profile
+                  </Link>
+                  <Link
+                    className="navbar-item"
+                    to="/dashboard"
+                    onClick={closeMenu}
+                  >
                     Dashboard
+                  </Link>
+                  <Link
+                    className="navbar-item"
+                    to="/create_event"
+                    onClick={closeMenu}
+                  >
+                    Create event
                   </Link>
                   <Link
                     className="navbar-item"
                     to="/signout"
                     onClick={e => {
                       e.preventDefault()
+                      closeMenu()
                       auth.signout()
                     }}
                   >
@@ -50,14 +91,16 @@ function Navbar(props) {
                   </Link>
                 </div>
               </div>
-            )}
+            </div>
+          )}
 
-            {!auth.user && (
+          {!auth.user && (
+            <div className="navbar-end">
               <Link className="navbar-item" to="/signin">
                 Sign in
               </Link>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </NavbarContainer>

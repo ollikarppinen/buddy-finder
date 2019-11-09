@@ -142,7 +142,7 @@ const MessageInput = ({ userUid }) => {
         <input
           className="input"
           type="text"
-          placeholder="Send a message..."
+          placeholder="Type a message..."
           onChange={onChange}
           onKeyPress={onKeyPress}
           value={message}
