@@ -10,7 +10,11 @@ export const Card = ({
   const truncatedDescription =
     description.slice(0, 140) + (description.length > 140 ? '...' : '')
   return (
-    <div className={className + ' card'} {...otherProps}>
+    <div
+      className={className + ' card'}
+      {...otherProps}
+      style={{ paddingBottom: '96px' }}
+    >
       <div className="card-image">
         <figure className="image is-4by3">
           <img
@@ -19,7 +23,7 @@ export const Card = ({
           />
         </figure>
       </div>
-      <div className="card-content" style={{ marginBottom: '96px' }}>
+      <div className="card-content">
         <div className="media">
           <div className="media-content">
             <p className="title is-4">{name}</p>
