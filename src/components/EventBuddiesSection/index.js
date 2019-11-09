@@ -8,7 +8,8 @@ import {
   isEmpty
 } from 'react-redux-firebase'
 import { Link } from './../../util/router'
-
+import { Tiling } from '../Tiling'
+import { Card } from '../Card'
 import Section from './../Section'
 
 export const EventBuddiesSection = ({ user }) => {
@@ -25,6 +26,15 @@ export const EventBuddiesSection = ({ user }) => {
   if (isEmpty(event)) {
     return <div>Event not found</div>
   }
+
+  return (
+    <div className="hero-body">
+      <div className="container">
+        <h1 className="title has-text-centered">Buddies</h1>
+        <BuddyList eventId={id} event={event} userUid={user.uid} />
+      </div>
+    </div>
+  )
 
   return (
     <Section>
@@ -57,6 +67,38 @@ export const EventBuddiesSection = ({ user }) => {
   )
 }
 
+const BBuddyList = ({ events = {} }) => {
+  const eventCards = Object.keys(events).map(eventUid => (
+    <BuddyCard
+      event={events[eventUid]}
+      eventId={eventUid}
+      className="tile is-child"
+    />
+  ))
+  return <Tiling perRow={3}>{eventCards}</Tiling>
+}
+
+const BuddyCard = ({ buddy, ...otherProps }) => {
+  const { description, name } = buddy
+  const footer = (
+    <Link
+      to={`/events`}
+      className="button is-info card-footer-item"
+      style={{ width: '176px', margin: 'auto' }}
+    >
+      Connect
+    </Link>
+  )
+  return (
+    <Card
+      name={name}
+      description={description}
+      footer={footer}
+      {...otherProps}
+    />
+  )
+}
+
 const BuddyList = ({ event, userUid, eventId }) => {
   const attendees = event.attendees || {}
 
@@ -80,7 +122,7 @@ const BuddyList = ({ event, userUid, eventId }) => {
   }
 
   return (
-    <ul>
+    <Tiling perRow={3}>
       {candidates.map(uid => (
         <BuddyListItem
           userUid={userUid}
@@ -90,7 +132,7 @@ const BuddyList = ({ event, userUid, eventId }) => {
           matchUid={matches[uid]}
         />
       ))}
-    </ul>
+    </Tiling>
   )
 }
 
@@ -139,41 +181,40 @@ const BuddyListItem = ({ eventId, buddyUid, userUid, connected, matchUid }) => {
     }
   }
 
+  const { name, description } = buddy
+  const footer = matchUid ? (
+    <Link
+      to={`/connections/${matchUid}`}
+      className="button is-success has-text-white card-footer-item"
+      style={{ width: '176px', margin: 'auto' }}
+    >
+      See connection
+    </Link>
+  ) : connected ? (
+    <button
+      className="button is-danger card-footer-item"
+      onClick={() => setConnection(false)}
+      style={{ width: '176px', margin: 'auto', lineHeight: '10px' }}
+    >
+      Cancel request
+    </button>
+  ) : (
+    <button
+      className="button is-success card-footer-item has-text-white"
+      onClick={() => setConnection(true)}
+      style={{ width: '176px', margin: 'auto', lineHeight: '10px' }}
+    >
+      Send connection request
+    </button>
+  )
+
   return (
-    <li className="media" key={buddyUid}>
-      <figure className="media-left">
-        <p className="image is-64x64">
-          <img src="https://bulma.io/images/placeholders/128x128.png" />
-        </p>
-      </figure>
-      <div className="media-content">
-        <div className="content">
-          <p>
-            <strong>{buddy.name}</strong>
-            <br />
-            {buddy.description}
-          </p>
-        </div>
-      </div>
-      <div className="media-right">
-        {matchUid ? <div className="">Connected!</div> : null}
-        {connected ? (
-          <button
-            className="button is-danger"
-            onClick={() => setConnection(false)}
-          >
-            Disconnect
-          </button>
-        ) : (
-          <button
-            className="button is-success"
-            onClick={() => setConnection(true)}
-          >
-            Send connection request
-          </button>
-        )}
-      </div>
-    </li>
+    <Card
+      name={name}
+      description={description}
+      footer={footer}
+      className="tile is-child"
+    />
   )
 }
 
