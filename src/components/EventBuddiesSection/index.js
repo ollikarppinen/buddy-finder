@@ -110,8 +110,8 @@ const BuddyList = ({ event, userUid, eventId }) => {
   if (!isLoaded(user)) {
     return <div className="is-loading">Loading...</div>
   }
+  const connectionRequests = (user.connectionRequests || {})[eventId] || {}
   const connections = (user.connections || {})[eventId] || {}
-  const matches = (user.matches || {})[eventId] || {}
 
   const candidates = Object.keys(attendees).reduce(
     (acc, uid) => (uid !== userUid && attendees[uid] ? acc.concat(uid) : acc),
@@ -128,15 +128,21 @@ const BuddyList = ({ event, userUid, eventId }) => {
           userUid={userUid}
           buddyUid={uid}
           eventId={eventId}
-          connected={connections[uid]}
-          matchUid={matches[uid]}
+          connected={connectionRequests[uid]}
+          connectionUid={connections[uid]}
         />
       ))}
     </Tiling>
   )
 }
 
-const BuddyListItem = ({ eventId, buddyUid, userUid, connected, matchUid }) => {
+const BuddyListItem = ({
+  eventId,
+  buddyUid,
+  userUid,
+  connected,
+  connectionUid
+}) => {
   const firebase = useFirebase()
   const path = `users/${buddyUid}`
   useFirebaseConnect([{ path }])
@@ -154,37 +160,43 @@ const BuddyListItem = ({ eventId, buddyUid, userUid, connected, matchUid }) => {
 
   const setConnection = connection => {
     firebase.set(
-      `users/${userUid}/connections/${eventId}/${buddyUid}`,
+      `users/${userUid}/connectionRequests/${eventId}/${buddyUid}`,
       connection
     )
     if (
       connection &&
-      !matchUid &&
-      ((buddy.connections || {})[eventId] || {})[userUid]
+      !connectionUid &&
+      ((buddy.connectionRequests || {})[eventId] || {})[userUid]
     ) {
       firebase
-        .push('matches', {
-          firstMatcherUid: buddyUid,
-          secondMatcherUid: userUid,
+        .push('connections', {
+          firstConnectorUid: buddyUid,
+          secondConnectorUid: userUid,
           eventUid: eventId,
           createdAt: firebase.database.ServerValue.TIMESTAMP
         })
         .then(({ key }) => {
-          firebase.set(`users/${userUid}/matches/${eventId}/${buddyUid}`, key)
-          firebase.set(`users/${buddyUid}/matches/${eventId}/${userUid}`, key)
+          firebase.set(
+            `users/${userUid}/connections/${eventId}/${buddyUid}`,
+            key
+          )
+          firebase.set(
+            `users/${buddyUid}/connections/${eventId}/${userUid}`,
+            key
+          )
         })
-    } else if (!connection && matchUid) {
-      firebase.remove(`matches/${matchUid}`).then(() => {
-        firebase.remove(`users/${userUid}/matches/${eventId}/${buddyUid}`)
-        firebase.remove(`users/${buddyUid}/matches/${eventId}/${userUid}`)
+    } else if (!connection && connectionUid) {
+      firebase.remove(`connections/${connectionUid}`).then(() => {
+        firebase.remove(`users/${userUid}/connections/${eventId}/${buddyUid}`)
+        firebase.remove(`users/${buddyUid}/connections/${eventId}/${userUid}`)
       })
     }
   }
 
   const { name, description } = buddy
-  const footer = matchUid ? (
+  const footer = connectionUid ? (
     <Link
-      to={`/connections/${matchUid}`}
+      to={`/connectionRequests/${connectionUid}`}
       className="button is-success has-text-white card-footer-item"
       style={{ width: '176px', margin: 'auto' }}
     >
