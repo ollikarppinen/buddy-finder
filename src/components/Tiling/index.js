@@ -1,5 +1,12 @@
 import React from 'react'
 
+const rowSizeToTileWidth = {
+  1: 12,
+  2: 6,
+  3: 4,
+  4: 3
+}
+
 export const Tiling = ({ perRow = 3, children = [] }) => {
   const childrenByRow = children.reduce(
     (acc, child, i) => {
@@ -20,7 +27,11 @@ export const Tiling = ({ perRow = 3, children = [] }) => {
         {childrenByRow.map((rowChildren, i) => (
           <div className="tile is-parent" key={i}>
             {rowChildren.map((child, j) => (
-              <div className="tile is-parent is-4" key={j}>
+              <div
+                className={`tile is-parent is-${rowSizeToTileWidth[perRow] ||
+                  12}`}
+                key={j}
+              >
                 {child}
               </div>
             ))}

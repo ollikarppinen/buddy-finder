@@ -10,108 +10,36 @@ import {
 import { Link } from './../../util/router'
 import { Tiling } from '../Tiling'
 import { Card } from '../Card'
-import Section from './../Section'
+import { EventSectionContainer } from '../EventSectionContainer'
 
-export const EventBuddiesSection = ({ user }) => {
+export const EventBuddiesSection = props => (
+  <EventSectionContainer {...props} activeTab="buddies">
+    <BuddyList {...props} />
+  </EventSectionContainer>
+)
+
+const BuddyList = props => {
+  const userUid = props.user.uid
   const { id } = useParams()
 
-  const path = `events/${id}`
-  useFirebaseConnect([{ path }])
+  const userPath = `users/${userUid}`
+  useFirebaseConnect([{ path: userPath }])
+  const eventPath = `events/${id}`
+  useFirebaseConnect([{ path: eventPath }])
 
   const { [id]: event } = useSelector(state => state.firebase.data.events || {})
-
-  if (!isLoaded(event)) {
-    return <div>Loading...</div>
+  const { [userUid]: user } = useSelector(
+    state => state.firebase.data.users || {}
+  )
+  if (!isLoaded(user) || !isLoaded(event)) {
+    return <div className="is-loading">Loading...</div>
   }
   if (isEmpty(event)) {
     return <div>Event not found</div>
   }
-
-  return (
-    <div className="hero-body">
-      <div className="container">
-        <h1 className="title has-text-centered">Buddies</h1>
-        <BuddyList eventId={id} event={event} userUid={user.uid} />
-      </div>
-    </div>
-  )
-
-  return (
-    <Section>
-      <div className="container">
-        <div className="card">
-          <header className="card-header">
-            <div className="card-header-title breadcrumb">
-              <ul>
-                <li key="1">
-                  <Link to={`/events`}>Events</Link>
-                </li>
-                <li key="2">
-                  <Link to={`/events/${id}`}>{event.name}</Link>
-                </li>
-                <li key="3" className="is-active">
-                  <Link to={path} aria-current="page">
-                    Buddies
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </header>
-          <div className="card-content">
-            <BuddyList eventId={id} event={event} userUid={user.uid} />
-          </div>
-          <footer className="card-footer"></footer>
-        </div>
-      </div>
-    </Section>
-  )
-}
-
-const BBuddyList = ({ events = {} }) => {
-  const eventCards = Object.keys(events).map(eventUid => (
-    <BuddyCard
-      event={events[eventUid]}
-      eventId={eventUid}
-      className="tile is-child"
-    />
-  ))
-  return <Tiling perRow={3}>{eventCards}</Tiling>
-}
-
-const BuddyCard = ({ buddy, ...otherProps }) => {
-  const { description, name } = buddy
-  const footer = (
-    <Link
-      to={`/events`}
-      className="button is-info card-footer-item"
-      style={{ width: '176px', margin: 'auto' }}
-    >
-      Connect
-    </Link>
-  )
-  return (
-    <Card
-      name={name}
-      description={description}
-      footer={footer}
-      {...otherProps}
-    />
-  )
-}
-
-const BuddyList = ({ event, userUid, eventId }) => {
+  const connectionRequests = (user.connectionRequests || {})[id] || {}
+  const connections = (user.connections || {})[id] || {}
   const attendees = event.attendees || {}
-
-  const path = `users/${userUid}`
-  useFirebaseConnect([{ path }])
-  const { [userUid]: user } = useSelector(
-    state => state.firebase.data.users || {}
-  )
-  if (!isLoaded(user)) {
-    return <div className="is-loading">Loading...</div>
-  }
-  const connectionRequests = (user.connectionRequests || {})[eventId] || {}
-  const connections = (user.connections || {})[eventId] || {}
 
   const candidates = Object.keys(attendees).reduce(
     (acc, uid) => (uid !== userUid && attendees[uid] ? acc.concat(uid) : acc),
@@ -122,12 +50,12 @@ const BuddyList = ({ event, userUid, eventId }) => {
   }
 
   return (
-    <Tiling perRow={3}>
+    <Tiling perRow={2}>
       {candidates.map(uid => (
         <BuddyListItem
           userUid={userUid}
           buddyUid={uid}
-          eventId={eventId}
+          eventId={id}
           connected={connectionRequests[uid]}
           connectionUid={connections[uid]}
         />
@@ -196,7 +124,7 @@ const BuddyListItem = ({
   const { name, description } = buddy
   const footer = connectionUid ? (
     <Link
-      to={`/connectionRequests/${connectionUid}`}
+      to={`/connections/${connectionUid}`}
       className="button is-success has-text-white card-footer-item"
       style={{ width: '176px', margin: 'auto' }}
     >
