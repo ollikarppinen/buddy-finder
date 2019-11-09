@@ -61,10 +61,19 @@ export const EventSectionContainer = ({ user, children, activeTab }) => {
                       </li>
                       <li
                         className={classNames({
-                          'is-active': activeTab === 'buddies'
+                          'is-active': activeTab === 'attendees'
                         })}
                       >
-                        <Link to={`/events/${id}/buddies`}>Attendees</Link>
+                        <Link to={`/events/${id}/attendees`}>Attendees</Link>
+                      </li>
+                      <li
+                        className={classNames({
+                          'is-active': activeTab === 'connections'
+                        })}
+                      >
+                        <Link to={`/events/${id}/connections`}>
+                          Connections
+                        </Link>
                       </li>
                     </ul>
                   </div>

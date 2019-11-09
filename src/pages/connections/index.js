@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import ConnectionSection from './../../components/ConnectionSection'
+import ConnectionsSection from './../../components/ConnectionsSection'
 import { useAuth } from './../../util/auth.js'
 import { useRouter } from './../../util/router.js'
 
-const ConnectionPage = () => {
+const ConnectionsPage = () => {
   const auth = useAuth()
   const router = useRouter()
 
@@ -15,7 +15,7 @@ const ConnectionPage = () => {
     }
   }, [auth, router])
 
-  return <ConnectionSection user={auth.user} />
+  return <ConnectionsSection user={auth.user} />
 }
 
-export default ConnectionPage
+export default ConnectionsPage

@@ -16,6 +16,7 @@ import EventPage from './../event'
 import EventsPage from './../events'
 import EventBuddiesPage from './../eventBuddies'
 import ConnectionPage from './../connection'
+import ConnectionsPage from './../connections'
 import { Switch, Route, Router } from './../../util/router.js'
 import Footer from './../../components/Footer'
 // import analytics from './../../util/analytics.js'
@@ -67,7 +68,19 @@ function App() {
 
               <Route
                 exact
-                path="/events/:id/buddies"
+                path="/events/:id/connections/:connectionUid"
+                component={ConnectionPage}
+              />
+
+              <Route
+                exact
+                path="/events/:id/connections"
+                component={ConnectionsPage}
+              />
+
+              <Route
+                exact
+                path="/events/:id/attendees"
                 component={EventBuddiesPage}
               />
 

@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux'
 import { useFirebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import { useParams } from 'react-router-dom'
 
-import Section from './../Section'
+import { EventSectionContainer } from '../EventSectionContainer'
 
-export const ConnectionSection = () => {
-  const { id } = useParams()
-  const path = `connections/${id}`
+export const ConnectionSection = props => {
+  const { connectionUid } = useParams()
+  const path = `connections/${connectionUid}`
   useFirebaseConnect([{ path }])
 
-  const { [id]: connection } = useSelector(
+  const { [connectionUid]: connection } = useSelector(
     state => state.firebase.data.connections || {}
   )
 
@@ -20,20 +20,16 @@ export const ConnectionSection = () => {
   if (isEmpty(connection)) {
     return <div>Connection not found</div>
   }
+
   return (
-    <Section>
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title has-text-centered">Connection</h1>
-          <ul>
-            <li>createdAt: {connection.createdAt}</li>
-            <li>eventUid: {connection.eventUid}</li>
-            <li>firstConnectorUid: {connection.firstConnectorUid}</li>
-            <li>secondConnectorUid: {connection.secondConnectorUid}</li>
-          </ul>
-        </div>
-      </div>
-    </Section>
+    <EventSectionContainer {...props} activeTab="connections">
+      <ul>
+        <li>createdAt: {connection.createdAt}</li>
+        <li>eventUid: {connection.eventUid}</li>
+        <li>firstConnectorUid: {connection.firstConnectorUid}</li>
+        <li>secondConnectorUid: {connection.secondConnectorUid}</li>
+      </ul>
+    </EventSectionContainer>
   )
 }
 
