@@ -16,7 +16,7 @@ const AccountPage = () => {
     }
   }, [auth, router])
 
-  return <AccountSection />
+  return <AccountSection user={auth.user} />
 }
 
 export default AccountPage

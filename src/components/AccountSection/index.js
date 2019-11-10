@@ -1,29 +1,22 @@
 import React, { useState } from 'react'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
-import { withFirebase, isLoaded } from 'react-redux-firebase'
+import { useFirebaseConnect, isLoaded, useFirebase } from 'react-redux-firebase'
+import { useSelector } from 'react-redux'
+
 import { useDebounce } from 'react-use'
 
 import Section from './../Section'
+import { ImageUploadField } from '../ImageUploadField'
 
 import './styles.scss'
 
-const AccountSection = ({ firebase, profile }) => {
+const AccountSection = ({ user }) => {
   return (
     <Section>
-      <div className="container">
-        <div className="card">
-          <header className="card-header">
-            <p className="card-header-title">Profile</p>
-          </header>
-          <div className="card-content">
-            <div className="content">
-              {isLoaded(profile) ? (
-                <ProfileForm firebase={firebase} profile={profile} />
-              ) : (
-                'loading...'
-              )}
-            </div>
+      <div className="hero-body">
+        <div className="container">
+          <h1 className="title has-text-centered">Profile</h1>
+          <div className="box">
+            {user ? <ProfileLoader user={user} /> : 'logging in...'}
           </div>
         </div>
       </div>
@@ -31,11 +24,23 @@ const AccountSection = ({ firebase, profile }) => {
   )
 }
 
-const ProfileForm = ({ profile, firebase }) => {
+const ProfileLoader = ({ user }) => {
+  const { uid: userUid } = user
+  useFirebaseConnect([{ path: `users/${userUid}` }])
+  const { [userUid]: profile } = useSelector(
+    state => state.firebase.data.users || {}
+  )
+  if (!isLoaded(profile)) {
+    return 'loading...'
+  }
+  return <ProfileForm profile={profile} userUid={userUid} />
+}
+
+const ProfileForm = ({ profile = {}, userUid }) => {
+  const firebase = useFirebase()
   const [name, setName] = useState(profile.name || '')
   const [description, setDescription] = useState(profile.description || '')
-  const [imageUrl, setImageUrl] = useState(profile.imageUrl || '')
-  const [contactInfo, setContactInfo] = useState(profile.contactInfo || '')
+
   const useDebouncedFirebaseUpdate = (key, value) =>
     useDebounce(
       () => {
@@ -46,65 +51,76 @@ const ProfileForm = ({ profile, firebase }) => {
     )
   useDebouncedFirebaseUpdate('name', name)
   useDebouncedFirebaseUpdate('description', description)
-  useDebouncedFirebaseUpdate('imageUrl', imageUrl)
-  useDebouncedFirebaseUpdate('contactInfo', contactInfo)
+
+  const afterUpload = e => {
+    const { downloadURL, key } = e
+    firebase.updateProfile({ imageUrl: downloadURL, imageUid: key })
+  }
+
   return (
     <form>
-      <div className="field">
-        <label className="label">Name</label>
-        <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="Text input"
-            value={name}
-            onChange={e => setName(e.target.value)}
-          />
+      <div className="field is-horizontal">
+        <div className="field-label is-normal">
+          <label className="label">Name</label>
+        </div>
+        <div className="field-body">
+          <div className="field">
+            <div className="control">
+              <input
+                className="input"
+                type="text"
+                placeholder="Text input"
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <div className="field">
-        <label className="label">Image URL</label>
-        <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="Text input"
-            value={imageUrl}
-            onChange={e => setImageUrl(e.target.value)}
-          />
+
+      <div className="field is-horizontal">
+        <div className="field-label is-normal">
+          <label className="label">Image</label>
+        </div>
+
+        <div className="field-body">
+          <ImageUploadField afterUpload={afterUpload} name={userUid} />
         </div>
       </div>
-      <div className="field">
-        <label className="label">Description</label>
-        <div className="control">
-          <textarea
-            className="textarea"
-            placeholder="Textarea"
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-          />
+
+      {profile.imageUrl ? (
+        <div className="field is-horizontal">
+          <div className="field-label is-normal">
+            <label className="label"></label>
+          </div>
+
+          <div className="field-body">
+            <figure className="image is-128x128">
+              <img className="" src={profile.imageUrl} />
+            </figure>
+          </div>
         </div>
-      </div>
-      <div className="field">
-        <label className="label">Contact Info</label>
-        <div className="control">
-          <textarea
-            className="textarea"
-            placeholder="Textarea"
-            value={contactInfo}
-            onChange={e => setContactInfo(e.target.value)}
-          />
+      ) : null}
+
+      <div className="field is-horizontal">
+        <div className="field-label is-normal">
+          <label className="label">Description</label>
+        </div>
+        <div className="field-body">
+          <div className="field">
+            <div className="control">
+              <textarea
+                className="textarea"
+                placeholder="Textarea"
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </form>
   )
 }
 
-const mapStateToProps = ({ firebase: { profile } }) => ({
-  profile
-})
-
-export default compose(
-  withFirebase,
-  connect(mapStateToProps)
-)(AccountSection)
+export default AccountSection
