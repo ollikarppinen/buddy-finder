@@ -3,6 +3,7 @@ import React from 'react'
 export const Card = ({
   name = '',
   description = '',
+  imageUrl = 'https://bulma.io/images/placeholders/1280x960.png',
   footer,
   className,
   ...otherProps
@@ -17,10 +18,7 @@ export const Card = ({
     >
       <div className="card-image">
         <figure className="image is-4by3">
-          <img
-            src="https://bulma.io/images/placeholders/1280x960.png"
-            alt="Placeholder image"
-          />
+          <img src={imageUrl} alt="Placeholder image" />
         </figure>
       </div>
       <div className="card-content">

@@ -33,10 +33,11 @@ const ProfileLoader = ({ user }) => {
   if (!isLoaded(profile)) {
     return 'loading...'
   }
-  return <ProfileForm profile={profile} userUid={userUid} />
+
+  return <ProfileForm profile={profile || {}} userUid={userUid} />
 }
 
-const ProfileForm = ({ profile = {}, userUid }) => {
+const ProfileForm = ({ profile, userUid }) => {
   const firebase = useFirebase()
   const [name, setName] = useState(profile.name || '')
   const [description, setDescription] = useState(profile.description || '')

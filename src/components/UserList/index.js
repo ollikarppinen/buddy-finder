@@ -128,7 +128,7 @@ export const UserListItem = ({
     }
   }
 
-  const { name, description } = buddy
+  const { name, description, imageUrl } = buddy
   const footer = connectionUid ? (
     <Link
       to={`/events/${eventId}/connections/${connectionUid}`}
@@ -158,6 +158,7 @@ export const UserListItem = ({
   return (
     <Card
       name={name}
+      imageUrl={imageUrl}
       description={description}
       footer={footer}
       className="tile is-child"
