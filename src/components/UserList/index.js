@@ -10,6 +10,7 @@ import {
 import { Link } from './../../util/router'
 import { Tiling } from '../Tiling'
 import { Card } from '../Card'
+import Loader from '../Loader'
 
 export const UserList = ({
   onlyConnected = false,
@@ -29,7 +30,7 @@ export const UserList = ({
     state => state.firebase.data.users || {}
   )
   if (!isLoaded(user) || !isLoaded(event)) {
-    return <div className="is-loading">Loading...</div>
+    return <Loader />
   }
   if (isEmpty(event)) {
     return <div>Event not found</div>
@@ -86,11 +87,7 @@ export const UserListItem = ({
   )
 
   if (!isLoaded(buddy)) {
-    return (
-      <li key={buddyUid} className="is-loading">
-        Loading...
-      </li>
-    )
+    return <Card loading className="tile is-child" />
   }
 
   const setConnection = connection => {

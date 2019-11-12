@@ -12,6 +12,7 @@ import classNames from 'classnames'
 import Section from './../Section'
 import { Link } from './../../util/router'
 import ImageContainer from '../ImageContainer'
+import Loader from '../Loader'
 
 export const EventSectionContainer = ({ user, children, activeTab }) => {
   const { id } = useParams()
@@ -22,7 +23,7 @@ export const EventSectionContainer = ({ user, children, activeTab }) => {
   const { [id]: event } = useSelector(state => state.firebase.data.events || {})
 
   if (!isLoaded(event)) {
-    return <div>Loading...</div>
+    return <Loader />
   }
   if (isEmpty(event)) {
     return <div>Event not found</div>

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useFirebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 import EventSectionContainer from '../EventSectionContainer'
+import Loader from '../Loader'
 
 const EventSection = props => {
   const { id } = useParams()
@@ -13,7 +14,7 @@ const EventSection = props => {
   const { [id]: event } = useSelector(state => state.firebase.data.events || {})
 
   if (!isLoaded(event)) {
-    return <div>Loading...</div>
+    return <Loader />
   }
   if (isEmpty(event)) {
     return <div>Event not found</div>

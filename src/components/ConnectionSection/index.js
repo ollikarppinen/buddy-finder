@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom'
 import classNames from 'classnames'
 
 import { EventSectionContainer } from '../EventSectionContainer'
+import Loader from '../Loader'
 
 export const ConnectionSection = props => {
   const { user } = props
@@ -23,7 +24,7 @@ export const ConnectionSection = props => {
   )
 
   if (!isLoaded(connection)) {
-    return <div>Loading...</div>
+    return <Loader />
   }
   if (isEmpty(connection)) {
     return <div>Connection not found</div>
@@ -49,7 +50,7 @@ const ConnectedUserPanel = ({ userUid }) => {
     state => state.firebase.data.users || {}
   )
   if (!isLoaded(user)) {
-    return <div>Loading...</div>
+    return <Loader />
   }
 
   return (
