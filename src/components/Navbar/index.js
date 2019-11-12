@@ -43,8 +43,8 @@ function Navbar(props) {
           {auth.user && (
             <div className="navbar-end">
               <Link className="navbar-item" to="/events" onClick={closeMenu}>
-                <span class="icon is-medium">
-                  <i class="far fa-calendar"></i>
+                <span className="icon is-medium">
+                  <i className="far fa-calendar"></i>
                 </span>
                 Events
               </Link>
@@ -57,8 +57,8 @@ function Navbar(props) {
                   className="navbar-link"
                   onClick={() => setAccountMenuOpen(!accountMenuOpen)}
                 >
-                  <span class="icon is-medium">
-                    <i class="far fa-user"></i>
+                  <span className="icon is-medium">
+                    <i className="far fa-user"></i>
                   </span>
                   Account
                 </div>
@@ -68,8 +68,8 @@ function Navbar(props) {
                     to="/account"
                     onClick={closeMenu}
                   >
-                    <span class="icon is-medium">
-                      <i class="fas fa-cog"></i>
+                    <span className="icon is-medium">
+                      <i className="fas fa-cog"></i>
                     </span>
                     Profile
                   </Link>
@@ -78,8 +78,8 @@ function Navbar(props) {
                     to="/dashboard"
                     onClick={closeMenu}
                   >
-                    <span class="icon is-medium">
-                      <i class="fas fa-bell"></i>
+                    <span className="icon is-medium">
+                      <i className="fas fa-bell"></i>
                     </span>
                     Dashboard
                   </Link>
@@ -88,8 +88,8 @@ function Navbar(props) {
                     to="/create_event"
                     onClick={closeMenu}
                   >
-                    <span class="icon is-medium">
-                      <i class="fas fa-calendar-plus"></i>
+                    <span className="icon is-medium">
+                      <i className="fas fa-calendar-plus"></i>
                     </span>
                     Create event
                   </Link>
@@ -102,8 +102,8 @@ function Navbar(props) {
                       auth.signout()
                     }}
                   >
-                    <span class="icon is-medium">
-                      <i class="fas fa-sign-out-alt"></i>
+                    <span className="icon is-medium">
+                      <i className="fas fa-sign-out-alt"></i>
                     </span>
                     Sign out
                   </Link>

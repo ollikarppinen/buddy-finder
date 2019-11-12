@@ -6,6 +6,7 @@ import { useDebounce } from 'react-use'
 
 import Section from './../Section'
 import { ImageUploadField } from '../ImageUploadField'
+import Loader from '../Loader'
 
 import './styles.scss'
 
@@ -31,7 +32,7 @@ const ProfileLoader = ({ user }) => {
     state => state.firebase.data.users || {}
   )
   if (!isLoaded(profile)) {
-    return 'loading...'
+    return <Loader />
   }
 
   return <ProfileForm profile={profile || {}} userUid={userUid} />

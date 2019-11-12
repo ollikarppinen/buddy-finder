@@ -2,25 +2,22 @@ import React, { useState } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { useFirebase, isLoaded } from 'react-redux-firebase'
-import { useRouter } from './../../util/router.js'
 
+import { useRouter } from './../../util/router.js'
 import Section from './../Section'
 import ImageContainer from '../ImageContainer'
+import Loader from '../Loader'
 
 import './styles.scss'
 
 const CreateEventSection = ({ auth }) => {
   return (
     <Section>
-      <div className="container">
-        <div className="card">
-          <header className="card-header">
-            <p className="card-header-title">Create Event</p>
-          </header>
-          <div className="card-content">
-            <div className="content">
-              {isLoaded(auth) ? <EventForm userUid={auth.uid} /> : 'loading...'}
-            </div>
+      <div className="hero-body">
+        <div className="container">
+          <h1 className="title has-text-centered">Create Event</h1>
+          <div className="box">
+            {isLoaded(auth) ? <EventForm userUid={auth.uid} /> : <Loader />}
           </div>
         </div>
       </div>
@@ -125,14 +122,15 @@ const EventForm = ({ userUid }) => {
             onChange={e => setImageUrl(e.target.value)}
           />
         </div>
+        <br />
+        <ImageContainer
+          imageUrl={imageUrl}
+          className="image is-3by1"
+          style={{ margin: 0 }}
+          img={{ style: { objectFit: 'cover', objectPosition: '50% 50%' } }}
+        />
       </div>
-      <ImageContainer
-        imageUrl={imageUrl}
-        className="image is-3by1"
-        style={{ margin: 0 }}
-        img={{ style: { objectFit: 'cover', objectPosition: '50% 50%' } }}
-      />
-      <button onClick={onCreateEvent} className="button is-success">
+      <button onClick={onCreateEvent} className="button is-large">
         Create
       </button>
     </form>
