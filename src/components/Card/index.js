@@ -17,8 +17,12 @@ export const Card = ({
       style={{ paddingBottom: '96px' }}
     >
       <div className="card-image">
-        <figure className="image is-4by3">
-          <img src={imageUrl} alt="Placeholder image" />
+        <figure className="image is-4by3" style={{ margin: 0 }}>
+          <img
+            src={imageUrl}
+            alt="Placeholder image"
+            style={{ objectFit: 'cover', objectPosition: '50% 20%' }}
+          />
         </figure>
       </div>
       <div className="card-content">
