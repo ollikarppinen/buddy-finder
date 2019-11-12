@@ -2,7 +2,9 @@ import React, { useCallback } from 'react'
 import { useFirebase } from 'react-redux-firebase'
 import { useDropzone } from 'react-dropzone'
 
-export const ImageUploadField = ({ afterUpload, name }) => {
+import ImageContainer from '../ImageContainer'
+
+export const ImageUploadField = ({ afterUpload, name, imageUrl }) => {
   const firebase = useFirebase()
   const imagesPath = 'uploadedImages'
   const onFilesDrop = files => {
@@ -47,6 +49,14 @@ export const ImageUploadField = ({ afterUpload, name }) => {
             <span className="file-label">Upload</span>
           </span>
         </div>
+      </div>
+      <div style={{ maxWidth: '50%' }}>
+        <ImageContainer
+          imageUrl={imageUrl}
+          className="image is-4by3"
+          style={{ margin: 0 }}
+          img={{ style: { objectFit: 'cover', objectPosition: '50% 20%' } }}
+        />
       </div>
     </div>
   )

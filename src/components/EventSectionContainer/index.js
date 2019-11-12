@@ -11,6 +11,7 @@ import classNames from 'classnames'
 
 import Section from './../Section'
 import { Link } from './../../util/router'
+import ImageContainer from '../ImageContainer'
 
 export const EventSectionContainer = ({ user, children, activeTab }) => {
   const { id } = useParams()
@@ -26,14 +27,7 @@ export const EventSectionContainer = ({ user, children, activeTab }) => {
   if (isEmpty(event)) {
     return <div>Event not found</div>
   }
-  const {
-    attendees = {},
-    name,
-    location,
-    startTime,
-    endTime,
-    imageUrl = 'https://bulma.io/images/placeholders/1280x960.png'
-  } = event
+  const { attendees = {}, name, location, startTime, endTime, imageUrl } = event
   const isAttending = attendees[user.uid]
 
   const setAttending = attending => {
@@ -46,13 +40,12 @@ export const EventSectionContainer = ({ user, children, activeTab }) => {
       <div className="container">
         <div className="card">
           <div className="card-image">
-            <figure className="image is-3by1" style={{ margin: 0 }}>
-              <img
-                src={imageUrl}
-                alt="Placeholder image"
-                style={{ objectFit: 'cover', objectPosition: '50% 50%' }}
-              />
-            </figure>
+            <ImageContainer
+              imageUrl={imageUrl}
+              className="image is-3by1"
+              style={{ margin: 0 }}
+              img={{ style: { objectFit: 'cover', objectPosition: '50% 50%' } }}
+            />
           </div>
           <div className="card-content">
             <div className="content">

@@ -5,6 +5,7 @@ import { useFirebase, isLoaded } from 'react-redux-firebase'
 import { useRouter } from './../../util/router.js'
 
 import Section from './../Section'
+import ImageContainer from '../ImageContainer'
 
 import './styles.scss'
 
@@ -40,6 +41,7 @@ const EventForm = ({ userUid }) => {
         startTime,
         endTime,
         userUid,
+        imageUrl,
         createdAt: firebase.database.ServerValue.TIMESTAMP
       })
       .then(({ key }) => router.push(`/events/${key}`))
@@ -50,6 +52,7 @@ const EventForm = ({ userUid }) => {
   const [location, setLocation] = useState('')
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
   return (
     <form>
       <div className="field">
@@ -111,6 +114,24 @@ const EventForm = ({ userUid }) => {
           />
         </div>
       </div>
+      <div className="field">
+        <label className="label">Image URL</label>
+        <div className="control">
+          <input
+            className="input"
+            type="text"
+            placeholder="Text input"
+            value={imageUrl}
+            onChange={e => setImageUrl(e.target.value)}
+          />
+        </div>
+      </div>
+      <ImageContainer
+        imageUrl={imageUrl}
+        className="image is-3by1"
+        style={{ margin: 0 }}
+        img={{ style: { objectFit: 'cover', objectPosition: '50% 50%' } }}
+      />
       <button onClick={onCreateEvent} className="button is-success">
         Create
       </button>

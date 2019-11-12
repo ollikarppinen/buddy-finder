@@ -1,9 +1,11 @@
 import React from 'react'
 
+import ImageContainer from '../ImageContainer'
+
 export const Card = ({
   name = '',
   description = '',
-  imageUrl = 'https://bulma.io/images/placeholders/1280x960.png',
+  imageUrl,
   footer,
   className,
   ...otherProps
@@ -17,13 +19,12 @@ export const Card = ({
       style={{ paddingBottom: '96px' }}
     >
       <div className="card-image">
-        <figure className="image is-4by3" style={{ margin: 0 }}>
-          <img
-            src={imageUrl}
-            alt="Placeholder image"
-            style={{ objectFit: 'cover', objectPosition: '50% 20%' }}
-          />
-        </figure>
+        <ImageContainer
+          imageUrl={imageUrl}
+          className="image is-4by3"
+          style={{ margin: 0 }}
+          img={{ style: { objectFit: 'cover', objectPosition: '50% 20%' } }}
+        />
       </div>
       <div className="card-content">
         <div className="media">

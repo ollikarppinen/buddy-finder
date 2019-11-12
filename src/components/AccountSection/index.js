@@ -85,23 +85,13 @@ const ProfileForm = ({ profile, userUid }) => {
         </div>
 
         <div className="field-body">
-          <ImageUploadField afterUpload={afterUpload} name={userUid} />
+          <ImageUploadField
+            afterUpload={afterUpload}
+            name={userUid}
+            imageUrl={profile.imageUrl}
+          />
         </div>
       </div>
-
-      {profile.imageUrl ? (
-        <div className="field is-horizontal">
-          <div className="field-label is-normal">
-            <label className="label"></label>
-          </div>
-
-          <div className="field-body">
-            <figure className="image is-128x128">
-              <img className="" src={profile.imageUrl} />
-            </figure>
-          </div>
-        </div>
-      ) : null}
 
       <div className="field is-horizontal">
         <div className="field-label is-normal">
