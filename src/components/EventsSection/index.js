@@ -43,7 +43,7 @@ const EventList = ({ events = {} }) => {
 }
 
 const EventCard = ({ event, eventId, ...otherProps }) => {
-  const { description, name } = event
+  const { description, name, imageUrl } = event
   const footer = (
     <Link
       to={`/events/${eventId}`}
@@ -57,6 +57,7 @@ const EventCard = ({ event, eventId, ...otherProps }) => {
     <Card
       name={name}
       description={description}
+      imageUrl={imageUrl}
       footer={footer}
       {...otherProps}
     />
