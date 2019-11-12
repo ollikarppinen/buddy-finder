@@ -22,7 +22,7 @@ function FaqPage(props) {
         subtitle=""
         buttonText="Get Started"
         buttonOnClick={() => {
-          router.push('/pricing')
+          router.push('/signup')
         }}
       />
     </>

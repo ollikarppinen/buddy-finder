@@ -15,18 +15,18 @@ function HomePage(props) {
       <HeroSection
         color="primary"
         size="large"
-        title="Your landing page title here"
-        subtitle="This landing page is perfect for showing off your awesome product and driving people to sign up for a paid plan."
-        buttonText="Start Free Trial"
+        title="Make the most of your vibrant Uni years"
+        subtitle=""
+        buttonText="Join"
         buttonOnClick={() => {
-          router.push('/pricing')
+          router.push('/signup')
         }}
       />
       <FeaturesSection
         color="white"
         size="medium"
         title="Features"
-        subtitle="All the features you need to move faster"
+        subtitle=""
       />
       <ClientsSection
         color="light"
@@ -47,7 +47,7 @@ function HomePage(props) {
         subtitle=""
         buttonText="Get Started"
         buttonOnClick={() => {
-          router.push('/pricing')
+          router.push('/signup')
         }}
       />
     </>

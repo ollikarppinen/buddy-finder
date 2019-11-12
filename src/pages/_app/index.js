@@ -42,7 +42,7 @@ function App() {
 
               <Route exact path="/faq" component={FaqPage} />
 
-              <Route exact path="/pricing" component={PricingPage} />
+              {/* <Route exact path="/pricing" component={PricingPage} /> */}
 
               <Route exact path="/contact" component={ContactPage} />
 

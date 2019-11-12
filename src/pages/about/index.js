@@ -14,7 +14,7 @@ function AboutPage(props) {
       <ContentSection
         color="white"
         size="large"
-        title="We help you make money"
+        title="We wont help you make money"
         subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo, corporis totam!"
       />
       <StatsSection
@@ -23,19 +23,19 @@ function AboutPage(props) {
         items={[
           {
             title: 'Tweets',
-            stat: '3,456'
+            stat: '0'
           },
           {
             title: 'Following',
-            stat: '123'
+            stat: '0'
           },
           {
             title: 'Followers',
-            stat: '456k'
+            stat: '0'
           },
           {
             title: 'Likes',
-            stat: '789'
+            stat: '0'
           }
         ]}
       />
@@ -52,7 +52,7 @@ function AboutPage(props) {
         subtitle=""
         buttonText="Get Started"
         buttonOnClick={() => {
-          router.push('/pricing')
+          router.push('/signup')
         }}
       />
     </>
