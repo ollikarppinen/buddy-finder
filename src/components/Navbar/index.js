@@ -73,11 +73,7 @@ function Navbar(props) {
                     </span>
                     Profile
                   </Link>
-                  <Link
-                    className="navbar-item"
-                    to="/dashboard"
-                    onClick={closeMenu}
-                  >
+                  <Link className="navbar-item" to="/" onClick={closeMenu}>
                     <span className="icon is-medium">
                       <i className="fas fa-bell"></i>
                     </span>

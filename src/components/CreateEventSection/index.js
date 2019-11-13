@@ -50,6 +50,7 @@ const EventForm = ({ userUid }) => {
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
   const [imageUrl, setImageUrl] = useState('')
+
   return (
     <form>
       <div className="field">

@@ -10,7 +10,7 @@ function SignUpSection(props) {
 
   // Go to page after signup
   const onSignup = () => {
-    router.push('/dashboard')
+    router.push('/')
   }
 
   return (
