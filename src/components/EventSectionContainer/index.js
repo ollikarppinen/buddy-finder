@@ -101,7 +101,7 @@ export const EventSectionContainer = ({ user, children, activeTab }) => {
                   <br />
                   {isAttending ? (
                     <button
-                      className="button is-danger"
+                      className="button"
                       onClick={() => setAttending(false)}
                     >
                       Unattend

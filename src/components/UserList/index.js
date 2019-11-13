@@ -129,10 +129,10 @@ export const UserListItem = ({
   const footer = connectionUid ? (
     <Link
       to={`/events/${eventId}/connections/${connectionUid}`}
-      className="button is-success has-text-white card-footer-item"
+      className="button card-footer-item"
       style={{ width: '176px', margin: 'auto' }}
     >
-      See connection
+      Go to connection
     </Link>
   ) : connected ? (
     <button
@@ -144,11 +144,11 @@ export const UserListItem = ({
     </button>
   ) : (
     <button
-      className="button is-success card-footer-item has-text-white"
+      className="button card-footer-item"
       onClick={() => setConnection(true)}
       style={{ width: '176px', margin: 'auto', lineHeight: '10px' }}
     >
-      Send connection request
+      Connect
     </button>
   )
 

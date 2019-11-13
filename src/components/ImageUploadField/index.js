@@ -33,7 +33,7 @@ export const ImageUploadField = ({ afterUpload, name, imageUrl }) => {
 
   return (
     <div className="field" {...getRootProps()}>
-      <div className="file is-info">
+      <div className="file">
         <div className="file-label">
           <input
             className="file-input"
@@ -50,6 +50,7 @@ export const ImageUploadField = ({ afterUpload, name, imageUrl }) => {
           </span>
         </div>
       </div>
+      <br />
       <div style={{ maxWidth: '50%' }}>
         <ImageContainer
           imageUrl={imageUrl}
