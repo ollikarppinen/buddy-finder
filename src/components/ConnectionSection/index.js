@@ -106,15 +106,14 @@ const MessageList = ({ messages = {}, userUid }) => {
 
 const Message = ({ message, userUid }) => {
   const { content } = message
-
   return (
-    <div
-      className={classNames('notification', {
-        'is-info is-light': message.userUid === userUid
+    <article
+      className={classNames('message', {
+        'is-success': message.userUid === userUid
       })}
     >
-      {content}
-    </div>
+      <div className="message-body">{content}</div>
+    </article>
   )
 }
 
