@@ -52,7 +52,6 @@ const EventForm = ({ userUid }) => {
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
   const [imageUrl, setImageUrl] = useState('')
-  const [time, setTime] = useState(null)
 
   return (
     <form>
