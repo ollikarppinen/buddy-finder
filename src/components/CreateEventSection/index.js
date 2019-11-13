@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { useFirebase, isLoaded } from 'react-redux-firebase'
+import DateTimePicker from 'react-datetime-picker'
+import moment from 'moment'
 
 import { useRouter } from './../../util/router.js'
 import Section from './../Section'
@@ -50,6 +52,7 @@ const EventForm = ({ userUid }) => {
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
   const [imageUrl, setImageUrl] = useState('')
+  const [time, setTime] = useState(null)
 
   return (
     <form>
@@ -91,24 +94,22 @@ const EventForm = ({ userUid }) => {
       <div className="field">
         <label className="label">Starts at</label>
         <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="Text input"
-            value={startTime}
-            onChange={e => setStartTime(e.target.value)}
+          <DateTimePicker
+            onChange={time => setStartTime(moment(time).unix())}
+            value={
+              Number.isInteger(startTime) ? new Date(startTime * 1000) : null
+            }
+            minDate={new Date()}
           />
         </div>
       </div>
       <div className="field">
         <label className="label">Ends at</label>
         <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="Text input"
-            value={endTime}
-            onChange={e => setEndTime(e.target.value)}
+          <DateTimePicker
+            onChange={time => setEndTime(moment(time).unix())}
+            value={Number.isInteger(endTime) ? new Date(endTime * 1000) : null}
+            minDate={new Date()}
           />
         </div>
       </div>
