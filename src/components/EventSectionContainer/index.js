@@ -79,7 +79,9 @@ export const EventSectionContainer = ({ user, children, activeTab }) => {
                       </li>
                     </ul>
                   </div>
-                  <div className="content">{children}</div>
+                  <div className="content" style={{ minHeight: '50px' }}>
+                    {children}
+                  </div>
                 </div>
                 <div className="column box">
                   <h1 className="title has-text-centered is-size-5">{name}</h1>
