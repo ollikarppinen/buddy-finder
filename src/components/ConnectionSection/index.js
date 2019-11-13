@@ -53,12 +53,19 @@ const ConnectedUserPanel = ({ userUid }) => {
     return <Loader />
   }
 
+  const {
+    imageUrl = 'https://bulma.io/images/placeholders/128x128.png',
+    name,
+    description
+  } = user
+
   return (
     <article className="media">
       <div className="media-left">
-        <figure className="image is-64x64">
+        <figure style={{ overflow: 'hidden' }} className="image is-128x128">
           <img
-            src="https://bulma.io/images/placeholders/128x128.png"
+            style={{ objectFit: 'cover', objectPosition: '50% 20%' }}
+            src={imageUrl}
             alt="Image"
           />
         </figure>
@@ -66,9 +73,9 @@ const ConnectedUserPanel = ({ userUid }) => {
       <div className="media-content">
         <div className="content">
           <p>
-            <strong>{user.name}</strong>
+            <strong>{name}</strong>
             <br />
-            {user.description}
+            {description}
           </p>
         </div>
       </div>
