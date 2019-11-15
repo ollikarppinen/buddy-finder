@@ -37,9 +37,6 @@ const NoEvents = () => (
 )
 
 const EventList = ({ events = {}, category }) => {
-  if (isEmpty(events)) {
-    return <NoEvents />
-  }
   var eventsInCategory = {}
   for (var event of Object.entries(events)) {
     var eventUid = event[0]
@@ -47,6 +44,9 @@ const EventList = ({ events = {}, category }) => {
     if (eventData['category'] === category || category == 'All events') {
       eventsInCategory[eventUid] = eventData
     }
+  }
+  if (isEmpty(eventsInCategory)) {
+    return <NoEvents />
   }
   const eventCards = Object.keys(eventsInCategory).map(eventUid => (
     <EventCard
