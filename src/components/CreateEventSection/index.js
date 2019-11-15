@@ -35,6 +35,7 @@ const EventForm = ({ userUid }) => {
     firebase
       .push('events', {
         name,
+        category,
         description,
         location,
         startTime,
@@ -47,6 +48,7 @@ const EventForm = ({ userUid }) => {
   }
 
   const [name, setName] = useState('')
+  const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
   const [location, setLocation] = useState('')
   const [startTime, setStartTime] = useState('')
@@ -65,6 +67,20 @@ const EventForm = ({ userUid }) => {
             value={name}
             onChange={e => setName(e.target.value)}
           />
+        </div>
+      </div>
+      <div className="field">
+        <label className="label">Category</label>
+        <div className="control">
+          <select
+            className="select"
+            onChange={e => setCategory(e.target.value)}
+          >
+            <option value="">Select a category for the event</option>
+            <option value="Parties">Parties</option>
+            <option value="Culture">Culture</option>
+            <option value="Sport & Wellness">Sport & Wellness</option>
+          </select>
         </div>
       </div>
       <div className="field">

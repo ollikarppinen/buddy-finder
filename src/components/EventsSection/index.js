@@ -13,16 +13,21 @@ export const EventSection = () => {
   useFirebaseConnect([{ path: `events` }])
   const events = useSelector(state => state.firebase.data.events)
 
-  return (
-    <Section>
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title has-text-centered">Events</h1>
-          {isLoaded(events) ? <EventList events={events} /> : <Loader />}
-        </div>
+  const categories = ['All events', 'Parties', 'Culture', 'Sport & Wellness']
+  const eventlists = categories.map(category => (
+    <div className="hero-body">
+      <div className="container">
+        <h1 className="title has-text-centered">{category}</h1>
+        {isLoaded(events) ? (
+          <EventList events={events} category={category} />
+        ) : (
+          <Loader />
+        )}
       </div>
-    </Section>
-  )
+    </div>
+  ))
+
+  return <Section>{eventlists}</Section>
 }
 
 const NoEvents = () => (
@@ -31,11 +36,19 @@ const NoEvents = () => (
   </div>
 )
 
-const EventList = ({ events = {} }) => {
+const EventList = ({ events = {}, category }) => {
   if (isEmpty(events)) {
     return <NoEvents />
   }
-  const eventCards = Object.keys(events).map(eventUid => (
+  var eventsInCategory = {}
+  for (var event of Object.entries(events)) {
+    var eventUid = event[0]
+    var eventData = event[1]
+    if (eventData['category'] === category || category == 'All events') {
+      eventsInCategory[eventUid] = eventData
+    }
+  }
+  const eventCards = Object.keys(eventsInCategory).map(eventUid => (
     <EventCard
       event={events[eventUid]}
       eventId={eventUid}
